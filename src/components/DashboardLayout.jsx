@@ -16,17 +16,17 @@ export const DashboardLayout = ({ children }) => {
 
     return (
         <div className="dashboard-layout">
-            {/* Sidebar Toggle Button */}
+            
             <Button variant="outline-dark" className={`toggle-button ${showSidebar ? 'hide' : ''}`} onClick={toggleSidebar}>
                 <i className={`bi bi-list icon`}></i>
             </Button>
 
-            {/* Sidebar */}
+            
             <div className={`sidebar ${showSidebar ? 'show' : ''}`}>
                 <Sidebar onHideSidebar={hideSidebar} />
             </div>
 
-            {/* Main Content */}
+        
             <Container fluid className="main-content">
                 <Row>
                     <Col xs={12}>
