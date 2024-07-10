@@ -1,19 +1,20 @@
 import React from 'react';
 import Header from './components/Header';
-import Sidebar from './components/Sidebar';
+
 import TaskList from './components/TaskList';
-import TaskDetail from './components/TaskDetail';
+import TaskDetailsView from './components/TaskDetailsView'
 import AddTaskForm from './components/AddTaskForm';
 import FilterSearch from './components/FilterSearch';
+import Sidebar from './components/SideBar';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Sidebar />
+      <Sidebar/>
       <main>
         <TaskList />
-        <TaskDetail />
+        <TaskDetailsView/>
         <AddTaskForm />
       </main>
     </div>
