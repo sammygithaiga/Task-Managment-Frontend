@@ -17,9 +17,7 @@ export const DashboardLayout = ({ children }) => {
     return (
         <div className="dashboard-layout">
            
-            <Button variant="outline-dark" className={`toggle-button ${showSidebar ? 'hide' : ''}`} onClick={toggleSidebar}>
-                <i className={`bi bi-list icon`}></i>
-            </Button>
+            
 
           
             <div className={`sidebar ${showSidebar ? 'show' : ''}`}>

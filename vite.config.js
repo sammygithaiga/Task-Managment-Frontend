@@ -6,4 +6,3 @@ export default defineConfig({
   plugins: [react()],
 })
 
-import "./../styles/DashboardLayout.css";

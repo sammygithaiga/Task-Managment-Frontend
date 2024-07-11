@@ -8,11 +8,10 @@ export const Projects = () => {
     const [projectDetails, setProjectDetails] = useState({ name: '', description: '' });
 
     useEffect(() => {
-        // Fetch projects from API
-        // Example:
-        // fetch('/api/projects')
-        //     .then(response => response.json())
-        //     .then(data => setProjects(data));
+        
+         fetch('/api/projects')
+            .then(response => response.json())
+           .then(data => setProjects(data));
     }, []);
 
     const handleShow = () => setShowModal(true);

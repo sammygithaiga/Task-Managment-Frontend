@@ -1,51 +1,123 @@
-import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { zodResolver } from '@hookform/resolvers/zod';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { Controller, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
 
-export const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+const schema = z.object({
+	email: z
+		.string()
+		.email({ message: 'Enter a valid email address' })
+		.min(1, { message: 'Email address is required' }),
+	password: z.string().min(1, { message: 'Password is required' }),
+});
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        // Add logic to handle login
-        // Example:
-        // const response = await fetch('/api/login', { method: 'POST', body: JSON.stringify({ email, password }) });
-        // if (response.ok) {
-        //     toast.success('Logged in successfully');
-        //     navigate('/');
-        // } else {
-        //     toast.error('Failed to log in');
-        // }
-    };
+export function Login() {
+	const form = useForm({
+		resolver: zodResolver(schema),
+		defaultValues: {
+			email: '',
+			password: '',
+		},
+	});
 
-    return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                    type="email"
-                    placeholder="Enter email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </Form.Group>
+	const navigate = useNavigate();
 
-            <Form.Group controlId="formPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </Form.Group>
+	const onSubmit = async (values) => {
+		await fetch(`${SERVER_URL}/login`, {
+			method: 'POST',
+			body: JSON.stringify(values),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.status === 'fail') {
+					toast.error(data.message);
+				} else {
+					const user = data.user;
+					const accessToken = data.access_token;
 
-            <Button variant="primary" type="submit">
-                Login
-            </Button>
-        </Form>
-    );
-};
+					// save user session to local storage
+					localStorage.setItem(
+						'session',
+						JSON.stringify({ user, accessToken })
+					);
+
+					toast.success(data.message);
+
+					navigate('/');
+				}
+			})
+			.catch((err) => console.log(err));
+	};
+
+	return (
+		<div
+			style={{
+				padding: 40,
+				display: 'flex',
+				height: '100%',
+				width: '100%',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}
+		>
+			<Form onSubmit={form.handleSubmit(onSubmit)}>
+				<Controller
+					control={form.control}
+					name="email"
+					render={({ field, fieldState }) => (
+						<Form.Group className="mb-3" controlId="formBasicEmail">
+							<Form.Label>Email address</Form.Label>
+							<Form.Control
+								{...field}
+								type="email"
+								placeholder="Enter email"
+							/>
+							{fieldState.invalid && (
+								<Form.Text className="text-danger">
+									{fieldState.error.message}
+								</Form.Text>
+							)}
+						</Form.Group>
+					)}
+				/>
+
+				<Controller
+					control={form.control}
+					name="password"
+					render={({ field, fieldState }) => (
+						<Form.Group
+							className="mb-3"
+							controlId="formBasicPassword"
+						>
+							<Form.Label>Password</Form.Label>
+							<Form.Control
+								{...field}
+								type="password"
+								placeholder="Password"
+							/>
+							{fieldState.invalid && (
+								<Form.Text className="text-danger">
+									{fieldState.error.message}
+								</Form.Text>
+							)}
+						</Form.Group>
+					)}
+				/>
+
+				<Button
+					variant="primary"
+					type="submit"
+					disabled={form.formState.isSubmitting}
+				>
+					{form.formState.isSubmitting ? 'Submitting...' : 'Submit'}
+				</Button>
+			</Form>
+		</div>
+	);
+}
