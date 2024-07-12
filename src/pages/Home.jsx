@@ -2,26 +2,25 @@ import React from 'react';
 import '../styles/home.css';
 
 export const Home = () => {
-
   return (
     <div className="home-container">
       <header className="home-header">
-        <h1>Welcome to TASKPULSE</h1>
+        <h1>WELCOME TO TASKPULSE</h1>
         <p>Organize and track your projects efficiently.</p>
       </header>
       <main className="home-main">
         <section className="features-section">
           <h2>Features</h2>
           <div className="features">
-            <div className="feature">
+            <div className="feature card">
               <h3>Easy to Use</h3>
               <p>Our application is user-friendly and easy to navigate.</p>
             </div>
-            <div className="feature">
+            <div className="feature card">
               <h3>Collaboration</h3>
               <p>Work with your team seamlessly with our collaboration tools.</p>
             </div>
-            <div className="feature">
+            <div className="feature card">
               <h3>Track Progress</h3>
               <p>Keep track of your tasks and projects with ease.</p>
             </div>
@@ -38,11 +37,3 @@ export const Home = () => {
     </div>
   );
 };
-
-    return (
-        <div>
-            <h1>Welcome To The Task Management App</h1>
-        </div>
-    );
-};
-
