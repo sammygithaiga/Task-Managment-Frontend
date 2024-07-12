@@ -9,6 +9,7 @@ import { Tasks } from './pages/Task';
 import { Projects } from './pages/Projects';
 import { DashboardLayout } from './components/DashboardLayout.jsx';
 import { Login } from './pages/Login';
+import {Register} from './components/Register.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
     element: (
       <DashboardLayout>
         <Projects />
+      </DashboardLayout>
+    ),
+  },
+  {
+    path: '/register',
+    element: (
+      <DashboardLayout>
+        <Register />
       </DashboardLayout>
     ),
   },

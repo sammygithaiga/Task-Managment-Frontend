@@ -1,0 +1,97 @@
+/* Home Page Styles */
+
+.home-container {
+  background-image: url('https://img.freepik.com/free-photo/top-view-circular-frame-with-desk-items_23-2148604894.jpg?t=st=1720703260~exp=1720706860~hmac=f349fd0c782af14670ca4e414c18a48beb6792a2b9be2bab18a2c570933f41c5&w=1380');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.custom-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.custom-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+.card-text {
+  font-size: 1.2rem;
+  color: #343a40;
+}
+
+.text-light {
+  color: #fff;
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background: url('https://img.freepik.com/free-photo/top-view-circular-frame-with-desk-items_23-2148604894.jpg?t=st=1720703260~exp=1720706860~hmac=f349fd0c782af14670ca4e414c18a48beb6792a2b9be2bab18a2c570933f41c5&w=1380') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+}
+
+.home-header {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.home-main {
+  flex: 1;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.features-section, .about-section {
+  margin-bottom: 40px;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.feature {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  color: #000;
+  margin: 10px;
+  padding: 20px;
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+}
+
+.home-footer {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+}
