@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Form, Button } from 'react-bootstrap';
-import '../styles/App.css'
-
-export const Login = () => {
+import '../styles/signup.css'
+export const Register = () => {
   return (
-    <div className="login-page" style={{
+    <div className="register-page" style={{
       background: 'linear-gradient(to right, #141E30, #243B55)',
       minHeight: '100vh',
       display: 'flex',
@@ -17,14 +16,19 @@ export const Login = () => {
           fontWeight: 'bold',
           fontSize: '3rem',
           cursor: 'pointer',
-          //transition: 'transform 0.3s ease-in-out'
+          transition: 'transform 0.3s ease-in-out'
         }}>
-          Welcome to TAKPULSE
+          TASKPULSE
         </h1>
-        <h2 className="text-center text-black mb-5">
-          <i className="bi bi-box-arrow-in-right"></i> Login
+        <h2 className="text-center text-black mb-4">
+          <i className="bi bi-person-plus-fill"></i> Register
         </h2>
         <Form>
+          <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Label className="text-white">Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter your name" required />
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="text-white">Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" required />
@@ -36,12 +40,12 @@ export const Login = () => {
           </Form.Group>
 
           <Button variant="primary" type="submit">
-            <i className="bi bi-box-arrow-in-right"></i> Login
+            <i className="bi bi-person-plus"></i> Register
           </Button>
         </Form>
 
         <p className="mt-3 text-center text-white">
-          Don't have an account? <Link to="/register" className="text-primary">Register here</Link>
+          Already have an account? <Link to="/" className="text-primary">Login here</Link>
         </p>
       </Container>
     </div>

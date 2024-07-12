@@ -8,11 +8,10 @@ export const Projects = () => {
     const [projectDetails, setProjectDetails] = useState({ name: '', description: '' });
 
     useEffect(() => {
-        // Fetch projects from API
-        // Example:
-        // fetch('/api/projects')
-        //     .then(response => response.json())
-        //     .then(data => setProjects(data));
+        
+         fetch('/api/projects')
+            .then(response => response.json())
+           .then(data => setProjects(data));
     }, []);
 
     const handleShow = () => setShowModal(true);
@@ -22,27 +21,32 @@ export const Projects = () => {
         event.preventDefault();
         // Add logic to handle create or update project
         // Example:
-        // fetch('/api/projects', { method: 'POST', body: JSON.stringify(projectDetails) })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         toast.success('Project created successfully');
-        //         setProjects([...projects, data]);
-        //         handleClose();
-        //     });
+         fetch('/api/projects', { method: 'POST', body: JSON.stringify(projectDetails) })
+             .then(response => response.json())
+             .then(data => {
+                 toast.success('Project created successfully');
+                 setProjects([...projects, data]);
+                 handleClose();
+             })
+             .catch(error =>{
+                console.error('Error creating project:', error);
+                toast.error('Failed creating project:', error);
+             })
+             
     };
 
     const handleDelete = (projectId) => {
         // Add logic to handle delete project
         // Example:
-        // fetch(/api/projects/${projectId}, { method: 'DELETE' })
-        //     .then(response => {
-        //         if (response.ok) {
-        //             toast.success('Project deleted successfully');
-        //             setProjects(projects.filter(project => project.id !== projectId));
-        //         } else {
-        //             toast.error('Failed to delete project');
-        //         }
-        //     });
+         fetch(`/api/projects/${projectId}`, { method: 'DELETE' })
+             .then(response => {
+                 if (response.ok) {
+                     toast.success('Project deleted successfully');
+                     setProjects(projects.filter(project => project.id !== projectId));
+                } else {
+                    toast.error('Failed to delete project');
+                }
+             });
     };
 
     return (
@@ -54,7 +58,7 @@ export const Projects = () => {
             <Table striped bordered hover className="mt-3">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Number</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Actions</th>
@@ -111,3 +115,4 @@ export const Projects = () => {
         </div>
     );
 };
+

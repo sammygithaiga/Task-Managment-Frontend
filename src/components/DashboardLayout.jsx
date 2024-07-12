@@ -1,3 +1,16 @@
+
+import React from 'react';
+import { Sidebar } from './Sidebar';
+import '../styles/DashboardLayout.css';
+
+export const DashboardLayout = ({ children }) => (
+  <div className="layout-container">
+    <Sidebar />
+    <div className="content-container">
+      {children}
+    </div>
+  </div>
+);
 import React, { useState } from 'react';
 import "./../styles/DashboardLayout.css";
 import { Container, Row, Col, Button } from 'react-bootstrap';
@@ -37,5 +50,6 @@ export const DashboardLayout = ({ children }) => {
         </div>
     );
 };
+
 
 

@@ -65,7 +65,7 @@ export const Tasks = () => {
             <Table striped bordered hover className="mt-3">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Number</th>
                         <th>Title</th>
                         <th>Description</th>
                         <th>Actions</th>
