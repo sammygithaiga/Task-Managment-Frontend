@@ -11,7 +11,7 @@ export function Sidebar() {
   return (
     <div className="sidebar-container">
       <button className="toggle-button" onClick={handleToggle}>
-        ☰ 
+         
       </button>
       <div className={`sidebar ${show ? 'show' : ''}`}>
         <Nav className="flex-column">
