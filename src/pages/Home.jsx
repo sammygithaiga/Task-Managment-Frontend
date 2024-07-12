@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/home.css';
 
 export const Home = () => {
+
   return (
     <div className="home-container">
       <header className="home-header">
@@ -37,3 +38,11 @@ export const Home = () => {
     </div>
   );
 };
+
+    return (
+        <div>
+            <h1>Welcome To The Task Management App</h1>
+        </div>
+    );
+};
+
