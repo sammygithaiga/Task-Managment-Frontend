@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Modal, Form } from 'react-bootstrap';
 import { toast } from 'react-hot-toast';
+import '../styles/project.css';
 
 export const Projects = () => {
     const [projects, setProjects] = useState([]);
@@ -8,10 +9,9 @@ export const Projects = () => {
     const [projectDetails, setProjectDetails] = useState({ name: '', description: '' });
 
     useEffect(() => {
-        
-         fetch('/api/projects')
+        fetch('/api/projects')
             .then(response => response.json())
-           .then(data => setProjects(data));
+            .then(data => setProjects(data));
     }, []);
 
     const handleShow = () => setShowModal(true);
@@ -19,43 +19,44 @@ export const Projects = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Add logic to handle create or update project
-        // Example:
-         fetch('/api/projects', { method: 'POST', body: JSON.stringify(projectDetails) })
-             .then(response => response.json())
-             .then(data => {
-                 toast.success('Project created successfully');
-                 setProjects([...projects, data]);
-                 handleClose();
-             })
-             .catch(error =>{
-                console.error('Error creating project:', error);
-                toast.error('Failed creating project:', error);
-             })
-             
+        fetch('/api/projects', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(projectDetails),
+        })
+            .then(response => response.json())
+            .then(data => {
+                toast.success('Project created successfully');
+                setProjects([...projects, data]);
+                handleClose();
+            })
+            .catch(error => {
+                console.error('Error creating project', error);
+                toast.error('Failed creating project', error);
+            });
     };
 
     const handleDelete = (projectId) => {
-        // Add logic to handle delete project
-        // Example:
-         fetch(`/api/projects/${projectId}`, { method: 'DELETE' })
-             .then(response => {
-                 if (response.ok) {
-                     toast.success('Project deleted successfully');
-                     setProjects(projects.filter(project => project.id !== projectId));
+        fetch(`/api/projects/${projectId}`, { method: 'DELETE' })
+            .then(response => {
+                if (response.ok) {
+                    toast.success('Project deleted successfully');
+                    setProjects(projects.filter(project => project.id !== projectId));
                 } else {
                     toast.error('Failed to delete project');
                 }
-             });
+            });
     };
 
     return (
-        <div>
-            <h1>Projects</h1>
-            <Button variant="primary" onClick={handleShow}>
+        <div className="projects-container">
+            <h1 className="text-center mb-4">Projects</h1>
+            <Button variant="success" onClick={handleShow} className="mb-3">
                 Add Project
             </Button>
-            <Table striped bordered hover className="mt-3">
+            <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>Number</th>
@@ -115,4 +116,3 @@ export const Projects = () => {
         </div>
     );
 };
-

@@ -21,7 +21,7 @@ export const Register = () => {
           TASKPULSE
         </h1>
         <h2 className="text-center text-black mb-4">
-          <i className="bi bi-person-plus-fill"></i> Register
+          <i className="bi bi-person-plus-fill"></i> Signup
         </h2>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicName">

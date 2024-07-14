@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Modal, Form } from 'react-bootstrap';
 import { toast } from 'react-hot-toast';
+import '../styles/tasks.css';
 
 export const Tasks = () => {
     const [tasks, setTasks] = useState([]);
@@ -57,12 +58,12 @@ export const Tasks = () => {
     };
 
     return (
-        <div>
-            <h1>Tasks</h1>
-            <Button variant="primary" onClick={handleShow}>
+        <div className="tasks-container">
+            <h1 className="text-center mb-4">Tasks</h1>
+            <Button variant="success" onClick={handleShow} className="mb-3">
                 Add Task
             </Button>
-            <Table striped bordered hover className="mt-3">
+            <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>Number</th>
