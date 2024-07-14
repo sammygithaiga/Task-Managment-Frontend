@@ -21,10 +21,9 @@ export const Register = () => {
           TASKPULSE
         </h1>
         <h2 className="text-center text-black mb-4">
-        ft-samuel-fixinghomepage
+      
           <i className="bi bi-person-plus-fill"></i> Signup
-          <i className="bi bi-person-plus-fill"></i> Sign up
-          main
+          <i className="bi bi-person-plus-fill"></i> 
         </h2>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicName">
