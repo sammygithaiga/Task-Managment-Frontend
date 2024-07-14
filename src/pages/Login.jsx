@@ -18,8 +18,11 @@ export const Login = () => {
           fontSize: '3rem',
           cursor: 'pointer',
           //transition: 'transform 0.3s ease-in-out'
-        }}>
+      }}>
+ ft-samuel-fixinghomepage
           Welcome to TASKPULSE
+          WELCOME TO TAKPULSE
+ main
         </h1>
         <h2 className="text-center text-black mb-5">
           <i className="bi bi-box-arrow-in-right"></i> Login
@@ -40,8 +43,13 @@ export const Login = () => {
           </Button>
         </Form>
 
+ ft-samuel-fixinghomepage
         <p className="mt-3 text-center">
           Do you have an account ? <Link to="/register" className="text-primary">Signup here</Link>
+
+        <p className="mt-3 text-center ">
+          Don't have an account? <Link to="/register" className="text-primary">Sign up here</Link 
+          main
         </p>
       </Container>
     </div>

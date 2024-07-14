@@ -21,7 +21,10 @@ export const Register = () => {
           TASKPULSE
         </h1>
         <h2 className="text-center text-black mb-4">
+        ft-samuel-fixinghomepage
           <i className="bi bi-person-plus-fill"></i> Signup
+          <i className="bi bi-person-plus-fill"></i> Sign up
+          main
         </h2>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicName">
@@ -40,11 +43,11 @@ export const Register = () => {
           </Form.Group>
 
           <Button variant="primary" type="submit">
-            <i className="bi bi-person-plus"></i> Register
+            <i className="bi bi-person-plus"></i> Sign up
           </Button>
         </Form>
 
-        <p className="mt-3 text-center text-white">
+        <p className="mt-3 text-center ">
           Already have an account? <Link to="/" className="text-primary">Login here</Link>
         </p>
       </Container>
